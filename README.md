@@ -1,5 +1,6 @@
 #Mojodox
-This guide written 12.2.17
+
+This guide written 12.2.17.
 
 Most of the program so far was written starting before 2015, but large update during Dec 2015-January 2016, before I finished off last part of my B.Sc.
 
@@ -45,33 +46,48 @@ Generally in JSON format.
 
 login.html - presents login screen and calls checklogin.php.  If login is OK, calls GUI.html
 GUI.html - first page to present options and calls main.php when submit button is pressed.
+
 ### main.php
+
 If there are no errors in the first document selected, it then does these things:
 (a) processes the text file by replacing all tags in 3 iterations, to produce the output text file with tags
 (b) creates and RTF format in memory from the processed text file
 (c) writes RTF and TXT to disk.
 {nb: it has an option to include an email mailer as well, by calling mailer.php}
+
 ### mailer.php (not used yet)
-contains address details, and will incorporate the attachment into a mail message and send]
+
+contains address details, and will incorporate the attachment into a mail message and send
 ### checklogin.php
+
 checks login and creates a session for this user
+
 ### tagparser.php
-Processes files in the 'content' folder and finds all the tags used]
+
+Processes files in the 'content' folder and finds all the tags used
+
 ### dataparser.php 
+
 Processes files in the 'data' folder and finds all the tags used for terminal data.  i.e. <tag> intended for insertion of text with no further replacement intended.]
 ### RTFstyles1.php
+
 ### RTFfunctions.php
+
 contains most of the functions that translate text tags in the processed file into an RTF file readable in Word]
 ### writeTXTlocal.php 
+
 This program writes all of the final content of the file, with just the style tags left in to show what will be passed to the RTF program for final output.  In this form, it is not dissimilar to a file that could be used as the body of an HTML page]
 ### writeRTFlocal.php
+
 The main program to turn a tagged text file into an RTF document
 
 ## Folders
 
 ###Content
+
 -->holds specific clauses.  The program tagparser.php reads in the contents of this folder, and stores all the tags and contents for later.  At present it does not use the actual name of the file, but instead uses the name given on the first line.  This means that if the filename changes, there is no consequence.  On the other hand, if there is more than one file with the same tag name there could be conflict.  Some checking for duplication could be introduced.
 ### Recipes
+
 Data-->Client specific data for all relevant documents in client-specific menu (JSON file)
 Client Menus--> Contains .ini files for the menus.  The .ini files contain a list of what displays in the dropdown, and a reference to the document type.  The document type is simply a text file in the 'content' folder, like any other clause, except that it contains a list of tags that are the specific clauses that you want to include.  
 
