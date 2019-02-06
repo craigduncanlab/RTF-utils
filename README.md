@@ -40,7 +40,9 @@ These define the files that define the pre-set menues
 See ClientMenus folder.
 Generally in JSON format.
 
-## Logins/pw  [These select the pre-set menus for each person]]
+## Logins/pw 
+
+These select the pre-set menus for each person
 
 # Main programs:
 
@@ -68,7 +70,7 @@ Processes files in the 'content' folder and finds all the tags used
 
 ### dataparser.php 
 
-Processes files in the 'data' folder and finds all the tags used for terminal data.  i.e. <tag> intended for insertion of text with no further replacement intended.
+Processes files in the 'data' folder and finds all the tags used for terminal data.  i.e. `<tag>` intended for insertion of text with no further replacement intended.
 
 ### RTFstyles1.php
 
@@ -99,11 +101,11 @@ Contains password details.  Also specifies what to show in the two dropdowns: 1)
 
 ## Textfile contents.
 
-These can contain any texts, and a <tag> that indicates it should be replaced with text from another file in the contents folder. 
+These can contain any texts, and a `<tag>` that indicates it should be replaced with text from another file in the contents folder. 
 This will replace text, up to about 4 layers deep. (i.e. it can keep opening tags that appear in sub-clauses to about 4 layers).
 At present these do not operate like XML: text to be replaced is indicated by a single <tag> rather than being defined with opening and closing tags like an XML block,
 
-Reserved names for a <tag> items are those that names used for specific data in the files in the data folder.
+Reserved names for a `<tag>` items are those that names used for specific data in the files in the data folder.
 
 Any tags that refer to the tags in data folders are 'terminating', in the sense that it will replace the contents with the specific text in that data folder.  It will not go further.
 
@@ -111,33 +113,36 @@ The common formatting tags you can use in a textfile are explained below.
 
 ## Formatting tags for files in the content folder.
 
-In .txt files in the content folder, a <tag> should either be:
-1) A <tag> with the name (?) of another file of text in the content folder; or
+In .txt files in the content folder, a `<tag>` should either be:
+1) A `<tag>` with the name (?) of another file of text in the content folder; or
 2) A pre-defined text style tag (see below).
 
 ## Text style tags (for files in content folder)
 
 These text style tags will look like they have a similarity with html tags.  They are a kind of mix between html and custom tags.  Only the opening tag is needed.
 We do not need to check for end tags because the program will only change tags when it encounters another style tag.
-Paragraph formatting like <p> and <kn> can be used together, just like selecting those options in Word.
+Paragraph formatting like `<p>` and `<kn>` can be used together, just like selecting those options in Word.
 
 At present, it will retain the same formatting across multiple lines until it gets to another paragraph or heading tag.  This means you can just put in a tag for the style you want, then just type text on the next line and it will create that next line with the same style until you change it.
-''e.g. The following has 3 lines all with the heading 3 <h3> style, then it reverts to heading 2.
+e.g. The following has 3 lines all with the heading 3 `<h3>` style, then it reverts to heading 2.
+```
 <h3>Comply with all policy decisions of the P & C Canteen Committee as communicated by the Chair of that sub-committee or a delegate of the President.
 Be subject to the lawful directions of the Chair of the P & C Canteen Committee.
 Inform the Chair of the P & C Canteen Committee if unable to undertake duties on a particular day due to illness or other reasons.
-<h2>The Canteen Manager agrees to be responsible for the daily operation of the school canteen. The duties are to:'''
-
+<h2>The Canteen Manager agrees to be responsible for the daily operation of the school canteen. The duties are to:
+```
 
 Key:  (in general see RTFfunctions.php file where it sets up arrays for replacing these text tags with pre-defined strings for the RTF documents, and combinations of RTF strings)
 
-'''<h1> Heading 1 in the predefined style
+```
+<h1> Heading 1 in the predefined style
 <p>paragraph text
 <n>
 <kn>keep with next
 <pb> page break
-
-Text style tags (a little bit like how WordPerfect worked)
+```
+Text style tags (a little bit like how WordPerfect worked):
+```
 <cen>centred
 <u>underline </u> end underline
 <b>bold  </b> end bold
@@ -148,25 +153,25 @@ Tables:
 <tr> Table row
 <tc> Table cell
 <cellnobord>
-<cellsign>'''
+<cellsign>
 
-
+```
 # Execution clauses
 Notes on execution clauses:
 
-These ultimately rely on tables, but for simplicity with RTF production, I have a hierarchy of tags, so that generally you just need to refer to something like <corpexec> to get a corporate execution clause and the program will take care of the rest.
+These ultimately rely on tables, but for simplicity with RTF production, I have a hierarchy of tags, so that generally you just need to refer to something like `<corpexec>` to get a corporate execution clause and the program will take care of the rest.
 
-<corpexec> relies on <partyexec>
-In turn <partyexec> relies on <CompanySign>, which is the file that contains the specific formatting for the table rows and cells.
+`<corpexec>` relies on `<partyexec>`
+In turn `<partyexec>` relies on `<CompanySign>`, which is the file that contains the specific formatting for the table rows and cells.
 To further simplify how that is written (having regard to RTF requirements), <CompanySign> includes some references that are specific to table cells, but should not be needed by most users.
-<cellnobord>
-<cellsign>
+`<cellnobord>`
+`<cellsign>`
 
 #RTF Styles
 RTF styles information.
 
 RTFstyles1.php contains a lot of the information and some further detailed explanation of how Word versions work with styles and what RTF readers can/cannot do.
-RTFfunctions.php contains the code that helps with inserting detailed RTF information for cells for tables.  This saves the need for further <tag> definition in the content files.
+RTFfunctions.php contains the code that helps with inserting detailed RTF information for cells for tables.  This saves the need for further `<tag>` definition in the content files.
 
 ## TO DO:
 Interfacing so that this program could be re-written in another language but keep the same interface structure.
