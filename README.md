@@ -69,7 +69,7 @@ Processes files in the 'content' folder and finds all the tags used
 ### dataparser.php 
 
 Processes files in the 'data' folder and finds all the tags used for terminal data.  i.e. <tag> intended for insertion of text with no further replacement intended.
-	
+
 ### RTFstyles1.php
 
 ### RTFfunctions.php
@@ -122,16 +122,16 @@ We do not need to check for end tags because the program will only change tags w
 Paragraph formatting like <p> and <kn> can be used together, just like selecting those options in Word.
 
 At present, it will retain the same formatting across multiple lines until it gets to another paragraph or heading tag.  This means you can just put in a tag for the style you want, then just type text on the next line and it will create that next line with the same style until you change it.
-e.g. The following has 3 lines all with the heading 3 <h3> style, then it reverts to heading 2.
+''e.g. The following has 3 lines all with the heading 3 <h3> style, then it reverts to heading 2.
 <h3>Comply with all policy decisions of the P & C Canteen Committee as communicated by the Chair of that sub-committee or a delegate of the President.
 Be subject to the lawful directions of the Chair of the P & C Canteen Committee.
 Inform the Chair of the P & C Canteen Committee if unable to undertake duties on a particular day due to illness or other reasons.
-<h2>The Canteen Manager agrees to be responsible for the daily operation of the school canteen. The duties are to:
+<h2>The Canteen Manager agrees to be responsible for the daily operation of the school canteen. The duties are to:'''
 
 
 Key:  (in general see RTFfunctions.php file where it sets up arrays for replacing these text tags with pre-defined strings for the RTF documents, and combinations of RTF strings)
 
-<h1> Heading 1 in the predefined style
+'''<h1> Heading 1 in the predefined style
 <p>paragraph text
 <n>
 <kn>keep with next
@@ -148,7 +148,7 @@ Tables:
 <tr> Table row
 <tc> Table cell
 <cellnobord>
-<cellsign>
+<cellsign>'''
 
 
 # Execution clauses
