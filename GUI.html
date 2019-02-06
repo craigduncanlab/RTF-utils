@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html> <head>
+<Title>Craig Duncan's MOJODOX Start Page</title>
+</head>
+<body>
+<!-- Created 4 Jan 2016 -->
+<!-- Revised 10 Jan 2016 -->
+<!-- Further revision 26 February 2017 -->
+<!-- start main body -->
+<h2>Agreement drafting</h2>
+<!--load up document file array from file using session variables-->
+<?php
+//get session data from login
+session_start();
+$userdoclist=$_SESSION["userdocs"];
+$userdatalist=$_SESSION["userdata"];
+$username=$_SESSION["username"];
+if ($userdoclist=="" || $username=="") {
+echo "You are not logged in","<br>";
+echo "<html><body><p> Click <a href=\"login.html\">here</a> to go back to login page</p>";
+exit();
+}
+else {
+echo "You are logged in as ",$_SESSION["username"],"<br>";
+}
+$ListR=array();
+$filename="clientmenus".'/'.$userdoclist;
+if(!$ListR=parse_ini_file($filename))
+{
+echo "recipe parse array failed<br>";
+echo $filename;
+exit();
+}
+//echo "<br>Recipe List, item 1: ",$ListR["Sale Agreement"];
+$keys=array_keys($ListR);
+$values=array_values($ListR);
+//echo "<br>Recipe List: ",$keys[0],'<br>';
+?>
+<!-- FORM-->
+<form name="documentForm" method="post" action="main.php" id="docForm">
+<!--create select box based on array-->
+<p>Select document type to use</p>
+<select name="docchoice" id="selectD1">
+  <option selected="docselect">Choose document</option>
+  <?php
+    foreach($keys as $name) {
+    ?>
+      <option value="<?= $ListR[$name] ?>"><?= "$name" ?></option>
+      <?php
+    } ?>
+<!--load up data file array from file-->
+</select>
+  <?php
+$ListD=array();
+$filename2="clientmenus/".$userdatalist;
+if(!$ListD=parse_ini_file($filename2))
+{
+echo "data parse array failed<br>";
+exit();
+}
+$keys=array_keys($ListD);
+$values=array_values($ListD);
+   ?>
+<!--create select box based on array-->
+<p>Select preferred data file to use</p>
+<select name="datachoice" id="selectD2">
+  <option selected="dataselected">Choose data file</option>
+  <?php
+    foreach($keys as $name) {
+    ?>
+      <option value="<?= $ListD[$name] ?>"><?= "$name" ?></option>
+  <?php
+    } ?>
+
+</select>
+<!-- Enter file name for save -->
+<p>Enter filename for save (no extension)</p>
+<input type="text" name="fnamesave" value="">
+<!-- Submit button -->
+<input type="Submit" value="Create Txt & RTF">
+</form>
+<p> <br><br>if you wish to logout or login again, go back to <a href="login.html">login</a> page</p>
+<!-- end credits -->
+<p>&nbsp;</p>
+<p>(c) Craig Duncan 2016-7
+<!-- end -->
+</body></html>

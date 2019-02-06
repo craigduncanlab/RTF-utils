@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html> <head>
+<Title>Craig Duncan's MOJODOX Start Page</title>
+</head>
+<body>
+<!-- Created 4 Jan 2016 -->
+<!-- Last updated 9 Jan 2016 -->
+<!-- navigation -->
+<!-- start main body -->
+<h2>Agreement drafting</h2>
+
+<!--load up document file array from file-->
+<?php
+$ListR=array();
+$filename="content".'/'."mainlist.ini";
+if(!$ListR=parse_ini_file($filename)) 
+{
+echo "recipe parse array failed<br>";
+exit();
+}
+echo "<br>Recipe List, item 1: ",$ListR["Sale Agreement"];
+$keys=array_keys($ListR);
+$values=array_values($ListR);
+echo "<br>Recipe List: ",$keys[0],'<br>'; 
+?>
+<!--create select box based on array-->
+<p>Select document type and data file to use</p>
+<select name="docchoice" id="selectD1">
+  <option selected="selected">Choose document</option>
+  <?php
+    foreach($keys as $name) { 
+    ?>
+      <option value="<?= $name ?>"><?= "$name" ?></option>
+      <?php
+    } ?>
+<!--load up data file array from file-->
+</select>
+  <?php
+$ListD=array();
+$filename2="data/datalist.ini";
+if(!$ListD=parse_ini_file($filename2)) 
+{
+echo "data parse array failed<br>";
+exit();
+}
+$keys=array_keys($ListD);
+$values=array_values($ListD);
+   ?>
+<!--create select box based on array-->
+<p>Select document type and data file to use</p>
+<select name="datachoice" id="selectD2">
+  <option selected="selected">Choose document</option>
+  <?php
+    foreach($keys as $name) { 
+    ?>
+      <option value="<?= $name ?>"><?= "$name" ?></option>
+  <?php
+    } ?>
+    
+</select> 
+</form>
+<!-- Submit button -->
+<p>Or else just type document <tag> into here:</p>
+<form action="main.php" name="clause1" method="post">
+<br>
+<input name="docreq" type="text" id="doc1" class="field" >
+<input type="hidden" name="RTFdummy">
+<input type="Submit" value="Update & Create RTF">
+<!-- end credits -->
+<p>&nbsp;</p>
+<p>(c) Craig Duncan 2016
+<!-- end -->
+</body></html>

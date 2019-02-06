@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 README
 
 MOJODOX documentation by Craig Duncan
@@ -149,3 +150,6 @@ TO DO:
 Interfacing so that this program could be re-written in another language but keep the same interface structure.
 Consider if different kinds of tags or XML would work better to distinguish between definitions, clauses, defined terms within clauses.
 
+=======
+# mojodox
+>>>>>>> 88aae7ea9522c7a93d050c44823afd9ef474a56a
