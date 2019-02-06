@@ -88,21 +88,32 @@ The main program to turn a tagged text file into an RTF document
 
 ## Folders
 
-###Content
+### Content
 
--->holds specific clauses.  The program tagparser.php reads in the contents of this folder, and stores all the tags and contents for later.  At present it does not use the actual name of the file, but instead uses the name given on the first line.  This means that if the filename changes, there is no consequence.  On the other hand, if there is more than one file with the same tag name there could be conflict.  Some checking for duplication could be introduced.
+Holds specific clauses.  The program `tagparser.php` reads in the contents of this folder, and stores all the tags and contents for later.  At present it does not use the actual name of the file, but instead uses the name given on the first line.  This means that if the filename changes, there is no consequence.  On the other hand, if there is more than one file with the same tag name there could be conflict.  Some checking for duplication could be introduced.
+
 ### Recipes
 
-Data-->Client specific data for all relevant documents in client-specific menu (JSON file)
-Client Menus--> Contains .ini files for the menus.  The .ini files contain a list of what displays in the dropdown, and a reference to the document type.  The document type is simply a text file in the 'content' folder, like any other clause, except that it contains a list of tags that are the specific clauses that you want to include.  
+### Data
+
+Client specific data for all relevant documents in client-specific menu (JSON file)
+
+### Client Menus
+
+Contains `.ini` files for the menus.  The `.ini` files contain a list of what displays in the dropdown, and a reference to the document type.  The document type is simply a text file in the `content` folder, like any other clause, except that it contains a list of tags that are the specific clauses that you want to include.  
 
 ### Login
-Contains password details.  Also specifies what to show in the two dropdowns: 1) the documents available 2) The data files available
+
+Contains password details.  Also specifies what to show in the two dropdowns: 
+1) the documents available 
+2) The data files available
 
 ## Textfile contents.
 
 These can contain any texts, and a `<tag>` that indicates it should be replaced with text from another file in the contents folder. 
+
 This will replace text, up to about 4 layers deep. (i.e. it can keep opening tags that appear in sub-clauses to about 4 layers).
+
 At present these do not operate like XML: text to be replaced is indicated by a single <tag> rather than being defined with opening and closing tags like an XML block,
 
 Reserved names for a `<tag>` items are those that names used for specific data in the files in the data folder.
@@ -167,12 +178,14 @@ To further simplify how that is written (having regard to RTF requirements), <Co
 `<cellnobord>`
 `<cellsign>`
 
-#RTF Styles
+# RTF Styles
 RTF styles information.
 
 RTFstyles1.php contains a lot of the information and some further detailed explanation of how Word versions work with styles and what RTF readers can/cannot do.
 RTFfunctions.php contains the code that helps with inserting detailed RTF information for cells for tables.  This saves the need for further `<tag>` definition in the content files.
 
 ## TO DO:
+
 Interfacing so that this program could be re-written in another language but keep the same interface structure.
+
 Consider if different kinds of tags or XML would work better to distinguish between definitions, clauses, defined terms within clauses.
