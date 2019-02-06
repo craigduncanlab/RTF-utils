@@ -1,10 +1,10 @@
-#Mojodox
+# Mojodox
 
 This guide written 12.2.17.
 
 Most of the program so far was written starting before 2015, but large update during Dec 2015-January 2016, before I finished off last part of my B.Sc.
 
-#Introduction
+# Introduction
 
 This is a prototype program, written in PHP.  It is intended to run on a local Apache Server.  
 
@@ -18,29 +18,29 @@ Text files used for input will contain tags to indicate formatting.  At the mome
 
 The program is designed to be modular, in the sense that blocks of text (clauses or other objects like an execution clause) can be defined for a document, and the program will expand each as required.
 
-#Data
+# Data
 
-##Current specific data:
+## Current specific data:
 
 At present there are client logins, stored client data for the existing document types, and custom menus for each client that specify the documents available to that client, plus the data files available to that client.  For example, a client may have access to a lease precedent, but may be able to choose which data file they want to use with that precedent.
 
-##Output:
+## Output:
 
 It will save all generated documents to a file called mydoc.rtf in the mojodox folder.  It also saves a .txt file which is the complete file before RTF processing.
 
-##Email:
+## Email:
 This is a small addition (see mailer.php), but at present it is not active and just saves to the local folder.
 
 ## TO DO
 Further work is needed to create menus for editing the contents of the clauses using the browser.  At the moment they can be edited by hand in a text editor.
 
-# Initialisation files:
+## Initialisation files:
 
 These define the files that define the pre-set menues
 See ClientMenus folder.
 Generally in JSON format.
 
-# Logins/pw  [These select the pre-set menus for each person]]
+## Logins/pw  [These select the pre-set menus for each person]]
 
 # Main programs:
 
@@ -68,15 +68,18 @@ Processes files in the 'content' folder and finds all the tags used
 
 ### dataparser.php 
 
-Processes files in the 'data' folder and finds all the tags used for terminal data.  i.e. <tag> intended for insertion of text with no further replacement intended.]
+Processes files in the 'data' folder and finds all the tags used for terminal data.  i.e. <tag> intended for insertion of text with no further replacement intended.
+	
 ### RTFstyles1.php
 
 ### RTFfunctions.php
 
-contains most of the functions that translate text tags in the processed file into an RTF file readable in Word]
+contains most of the functions that translate text tags in the processed file into an RTF file readable in Word
+
 ### writeTXTlocal.php 
 
-This program writes all of the final content of the file, with just the style tags left in to show what will be passed to the RTF program for final output.  In this form, it is not dissimilar to a file that could be used as the body of an HTML page]
+This program writes all of the final content of the file, with just the style tags left in to show what will be passed to the RTF program for final output.  In this form, it is not dissimilar to a file that could be used as the body of an HTML page
+
 ### writeRTFlocal.php
 
 The main program to turn a tagged text file into an RTF document
