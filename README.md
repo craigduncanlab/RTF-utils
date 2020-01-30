@@ -1,8 +1,8 @@
-# Mojodox
+# RTF utilities
 
 This guide written 12.2.17.
 
-Most of the program so far was written starting before 2015, but large update during Dec 2015-January 2016, before I finished off last part of my B.Sc.
+Most of the program so far was written starting before 2015, but was updated during Dec 2015-January 2016.
 
 # Introduction
 
